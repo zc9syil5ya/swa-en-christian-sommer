@@ -48,7 +48,7 @@ You will have to use a repository (or database), where you will _persist_ the en
 ## Project delivery
 #Requirements
 * JDK 14
-*Node.Js >15
+* Node.Js >15
 
 How to start the project:
 
