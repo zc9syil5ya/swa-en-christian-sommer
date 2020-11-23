@@ -46,11 +46,15 @@ You will have to use a repository (or database), where you will _persist_ the en
 * [PetClinic](https://github.com/spring-projects/spring-petclinic)
 
 ## Project delivery
-### Requirements
+### 1) Requirements
 * JDK 14
 * Node.Js >15
 
 How to start the project:
+
+### 2) Database location
+Set path for the database `spring.datasource.url=jdbc:h2:file:C:/temp/test` in `application.properties`
+
 
 How to test the project:
 
