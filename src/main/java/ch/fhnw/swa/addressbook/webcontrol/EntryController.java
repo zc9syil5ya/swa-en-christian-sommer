@@ -5,23 +5,20 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import ch.fhnw.swa.addressbook.model.Entry;
-import ch.fhnw.swa.addressbook.entryservice.Entryentryservice;
+import ch.fhnw.swa.addressbook.service.EntryService;
 import ch.fhnw.swa.addressbook.exception.EntryNotFoundException;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/entry")
 public class EntryController {
     @Autowired
-    Entryentryservice entryservice;
+    EntryService entryservice;
 
     @GetMapping
     public ResponseEntity<List<Entry>> getAllEntry() {
         List<Entry> list = entryservice.getAllEntrys();
-
         return new ResponseEntity<List<Entry>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
@@ -41,11 +38,9 @@ public class EntryController {
     }
 
     @PostMapping
-    public ResponseEntity<Entry> createOrUpdateEntry(Entry employee)
+    public ResponseEntity<Entry> createOrUpdateEntry(Entry entry)
             throws EntryNotFoundException {
-        Entry updated = entryservice.createOrUpdateEmployee(employee);
+        Entry updated = entryservice.createOrUpdateEntry(entry);
         return new ResponseEntity<Entry>(updated, new HttpHeaders(), HttpStatus.OK);
     }
-
-
 }
