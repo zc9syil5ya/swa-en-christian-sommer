@@ -1,11 +1,13 @@
 package ch.fhnw.swa.addressbook.service;
 
+import ch.fhnw.swa.addressbook.exception.EntryNotFoundException;
 import ch.fhnw.swa.addressbook.model.Entry;
 import ch.fhnw.swa.addressbook.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EntryService {
@@ -20,9 +22,14 @@ public class EntryService {
             return new ArrayList<Entry>();
         }
     }
-
-    public Entry getEntryById(Long id) {
-        return null;
+    //Function gets gets a entry by ID
+    public Entry getEntryById(Long id) throws EntryNotFoundException {
+        Optional<Entry> entry = repo.findById(id);
+        if(entry.isPresent()) {
+            return entry.get();
+        } else {
+            throw new EntryNotFoundException("No employee record exist for given id");
+        }
     }
 
     public void deleteEntryById(Long id) {
