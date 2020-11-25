@@ -1,6 +1,5 @@
 package ch.fhnw.swa.addressbook.resource;
 
-
 import ch.fhnw.swa.addressbook.exception.EntryNotFoundException;
 import ch.fhnw.swa.addressbook.model.Entry;
 import ch.fhnw.swa.addressbook.service.EntryService;
@@ -49,6 +48,21 @@ public class EntryResource {
     public ResponseEntity<Entry> updateEntry( @PathVariable long id, @RequestBody Entry entry) {
         Entry courseUpdated = entryservice.createOrUpdateEntry(entry);
         return new ResponseEntity<Entry>(entry, HttpStatus.OK);
+    }
+
+    //Function deletes an entry when calling the url .../entry/{id}
+    @DeleteMapping("/entry/{id}")
+    public ResponseEntity<Void> deleteEntry(@PathVariable long id) {
+        Entry en = null;
+        try {
+            en = entryservice.deleteEntryById(id);
+        } catch (EntryNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (en != null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
