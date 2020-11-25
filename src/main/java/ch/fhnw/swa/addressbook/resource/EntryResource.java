@@ -5,6 +5,7 @@ import ch.fhnw.swa.addressbook.exception.EntryNotFoundException;
 import ch.fhnw.swa.addressbook.model.Entry;
 import ch.fhnw.swa.addressbook.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -33,12 +34,21 @@ public class EntryResource {
         }
         return null;
     }
+
+    //Function creates an entry when calling the url .../entry
     @PostMapping("/entry")
     public ResponseEntity<Void> createEntry(@RequestBody Entry entry) {
         Entry createdEntry = entryservice.createOrUpdateEntry(entry);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdEntry.getId())
                 .toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    //Function updates an entry when calling the url .../entry/{id}
+    @PutMapping("/entry/{id}")
+    public ResponseEntity<Entry> updateEntry( @PathVariable long id, @RequestBody Entry entry) {
+        Entry courseUpdated = entryservice.createOrUpdateEntry(entry);
+        return new ResponseEntity<Entry>(entry, HttpStatus.OK);
     }
 
 }
