@@ -13,6 +13,7 @@ import java.util.Optional;
 public class EntryService {
     @Autowired
     EntryRepository repo;
+
     //Function gets all address book Entries from the database
     public List<Entry> getAllEntries() {
         List<Entry> employeeList = repo.findAll();

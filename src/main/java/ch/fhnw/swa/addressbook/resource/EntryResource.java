@@ -6,9 +6,15 @@ import ch.fhnw.swa.addressbook.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.net.URI;
 import java.util.List;
 
@@ -24,7 +30,7 @@ public class EntryResource {
     }
 
     //Function gets an entry by ID when calling the url .../entry/{id}
-    @GetMapping("/entry/{id}")
+    @GetMapping("/entries/{id}")
     public Entry getEntry(@PathVariable long id) {
         try {
             return entryservice.getEntryById(id);
@@ -35,7 +41,7 @@ public class EntryResource {
     }
 
     //Function creates an entry when calling the url .../entry
-    @PostMapping("/entry")
+    @PostMapping("/entries")
     public ResponseEntity<Void> createEntry(@RequestBody Entry entry) {
         Entry createdEntry = entryservice.createOrUpdateEntry(entry);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdEntry.getId())
@@ -44,14 +50,14 @@ public class EntryResource {
     }
 
     //Function updates an entry when calling the url .../entry/{id}
-    @PutMapping("/entry/{id}")
+    @PutMapping("/entries/{id}")
     public ResponseEntity<Entry> updateEntry( @PathVariable long id, @RequestBody Entry entry) {
-        Entry courseUpdated = entryservice.createOrUpdateEntry(entry);
+        Entry updated = entryservice.createOrUpdateEntry(entry);
         return new ResponseEntity<Entry>(entry, HttpStatus.OK);
     }
 
     //Function deletes an entry when calling the url .../entry/{id}
-    @DeleteMapping("/entry/{id}")
+    @DeleteMapping("/entries/{id}")
     public ResponseEntity<Void> deleteEntry(@PathVariable long id) {
         Entry en = null;
         try {
