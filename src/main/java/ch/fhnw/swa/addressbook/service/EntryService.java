@@ -31,7 +31,7 @@ public class EntryService {
             throw new EntryNotFoundException("No entry record exist for given id");
         }
     }
-
+    //Function delete a entry by ID
     public Entry deleteEntryById(Long id) throws EntryNotFoundException {
         Optional<Entry> entry = repo.findById(id);
         if(entry.isPresent()) {
@@ -42,7 +42,23 @@ public class EntryService {
             throw new EntryNotFoundException("No entry record exist for given id");
         }
     }
+    //Function creates or update a Entry in the database
     public Entry createOrUpdateEntry(Entry entry){
-        return null;
+        Optional<Entry> _entry= repo.findById(entry.getId());
+        if(_entry.isPresent()) {
+            Entry newEntry = _entry.get();
+            newEntry.setFirstName(entry.getFirstName());
+            newEntry.setLastName(entry.getLastName());
+            newEntry.setStreet(entry.getStreet());
+            newEntry.setZipcode(entry.getZipcode());
+            newEntry.setCity(entry.getCity());
+            newEntry.setEmail(entry.getEmail());
+            newEntry.setPhone(entry.getPhone());
+            newEntry = repo.save(newEntry);
+            return newEntry;
+        } else {
+            entry = repo.save(entry);
+            return entry;
+        }
     }
 }
