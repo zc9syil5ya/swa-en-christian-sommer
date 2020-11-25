@@ -18,7 +18,7 @@ public class EntryController {
 
     @GetMapping
     public ResponseEntity<List<Entry>> getAllEntry() {
-        List<Entry> list = entryservice.getAllEntrys();
+        List<Entry> list = entryservice.getAllEntries();
         return new ResponseEntity<List<Entry>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 

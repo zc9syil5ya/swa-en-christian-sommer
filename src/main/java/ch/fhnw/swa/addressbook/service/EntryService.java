@@ -4,7 +4,6 @@ import ch.fhnw.swa.addressbook.model.Entry;
 import ch.fhnw.swa.addressbook.repository.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,8 @@ import java.util.List;
 public class EntryService {
     @Autowired
     EntryRepository repo;
-    public List<Entry> getAllEntrys() {
+    //Function gets all address book Entries from the database
+    public List<Entry> getAllEntries() {
         List<Entry> employeeList = repo.findAll();
         if(employeeList.size() > 0) {
             return employeeList;
