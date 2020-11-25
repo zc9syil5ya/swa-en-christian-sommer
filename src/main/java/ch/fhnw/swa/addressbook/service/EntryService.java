@@ -28,11 +28,19 @@ public class EntryService {
         if(entry.isPresent()) {
             return entry.get();
         } else {
-            throw new EntryNotFoundException("No employee record exist for given id");
+            throw new EntryNotFoundException("No entry record exist for given id");
         }
     }
 
-    public void deleteEntryById(Long id) {
+    public Entry deleteEntryById(Long id) throws EntryNotFoundException {
+        Optional<Entry> entry = repo.findById(id);
+        if(entry.isPresent()) {
+            Entry en = entry.get();
+            repo.deleteById(id);
+            return en;
+        } else {
+            throw new EntryNotFoundException("No entry record exist for given id");
+        }
     }
     public Entry createOrUpdateEntry(Entry entry){
         return null;
