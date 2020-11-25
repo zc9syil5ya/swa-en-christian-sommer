@@ -46,13 +46,29 @@ You will have to use a repository (or database), where you will _persist_ the en
 * [PetClinic](https://github.com/spring-projects/spring-petclinic)
 
 ## Project delivery
-### 1) Requirements
+
+### License
+    Copyright 2020 Christian Sommer
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+### Requirements
 * JDK 14
 * Node.Js >15
 
-How to start the project:
+### How to start the project:
 
-### 2) Database location
+#### 1) Database location
 Set path for the database `spring.datasource.url=jdbc:h2:file:C:/temp/test` in `application.properties`
 
 
