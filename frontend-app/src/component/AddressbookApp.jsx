@@ -11,8 +11,6 @@ class AddressbookApp extends Component {
                     <h1>address book application</h1>
                     <Switch>
                         <Route path="/" exact component={EntryListComponent} />
-                        <Route path="/entries" exact component={EntryListComponent} />
-                        <Route path="/entries/:id" component={EntryComponent} />
                     </Switch>
                 </>
             </Router>
