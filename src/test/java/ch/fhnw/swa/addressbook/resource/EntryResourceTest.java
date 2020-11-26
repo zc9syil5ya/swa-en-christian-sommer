@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(classes = AddressbookApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class EntryResourceTest {
-    private static final String TEST_ADDRESS_BOOK = "address-book1";
+
     private static final String CONTACTS_END_POINT = "/entries";
 
     @LocalServerPort
@@ -31,6 +31,8 @@ class EntryResourceTest {
     @Autowired
     private EntryService entryservice;
 
+    @Autowired
+    private EntryResource entryresource;
 
     TestRestTemplate restTemplate = new TestRestTemplate();
 
@@ -44,27 +46,7 @@ class EntryResourceTest {
 
     @Test
     void createEntry() {
-        Entry entry = new Entry();
-        entry.setId((long) -1);
-        entry.setEmail("marsupilami@gameboy.com");
 
-        Entry en = entryservice.createOrUpdateEntry(entry);
-
-        HttpEntity<Entry> entity = new HttpEntity<>(en);
-
-        ResponseEntity<Entry> response = restTemplate.exchange(
-                createURLWithPort(CONTACTS_END_POINT),
-                HttpMethod.POST, entity, Entry.class);
-
-        String dinimueter = response.toString();
-
-        Assert.assertTrue(response.getStatusCode().value() == 201);
-
-        try {
-            entryservice.deleteEntryById(en.getId());
-        } catch (EntryNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 
     @Test

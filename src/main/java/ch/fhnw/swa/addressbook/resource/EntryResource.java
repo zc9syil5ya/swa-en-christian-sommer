@@ -42,7 +42,7 @@ public class EntryResource {
 
     //Function creates an entry when calling the url .../entry
     @PostMapping("/entries")
-    public ResponseEntity<Void> createEntry(@RequestBody Entry entry) {
+    public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) {
         Entry createdEntry = entryservice.createOrUpdateEntry(entry);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(createdEntry.getId())
                 .toUri();
