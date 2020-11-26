@@ -1,5 +1,9 @@
 package ch.fhnw.swa.addressbook.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
@@ -13,9 +17,13 @@ public class Entry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id",updatable = false,nullable = false)
     private Long id;
 
     @Column(name="firstname")
+    //@NotNull(message = "Please provide first Name")
+    //@NotEmpty(message = "Please provide first Name")
+   // @Pattern(regexp = "^[a-zA-Z][a-zA-Z0-9-]*$", message = "first name must be alphanumeric and start with character")
     private String firstName;
 
     @Column(name="lastname")
