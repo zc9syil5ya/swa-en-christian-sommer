@@ -44,6 +44,9 @@ public class Entry {
     @Column(name="phone", length=200)
     private String phone;
 
+    @Column(name="image")
+    private String image;
+
     public Long getId() {
         return id;
     }
@@ -106,6 +109,14 @@ public class Entry {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

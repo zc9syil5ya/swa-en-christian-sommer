@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Form, Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import React, { Component , } from 'react';
 import EntryDataService from '../../../frontend-app/src/service/EntryDataService';
 
 class EntryListComponent extends Component {
@@ -48,6 +47,10 @@ class EntryListComponent extends Component {
         console.log('update ' + id)
         this.props.history.push(`/entries/${id}`)
     }
+    updateImageClicked(id) {
+        console.log('update ' + id)
+        this.props.history.push(`/upload/${id}`)
+    }
 
     render() {
         console.log('render')
@@ -58,10 +61,11 @@ class EntryListComponent extends Component {
                     <table className="table">
                         <thead>
                         <tr>
-                            <th>id</th>
+                            <th></th>
                             <th>firstName</th>
                             <th>lastName</th>
                             <th>email</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -71,10 +75,22 @@ class EntryListComponent extends Component {
                             this.state.entries.map(
                                 entry =>
                                     <tr key={entry.id}>
-                                        <td>{entry.id}</td>
+                                        <td>
+                                            <div>
+                                                    <img  width="70" height="70" class="rounded-circle" src={entry.image} alt="Avatar"/>
+                                            </div>
+                                        </td>
                                         <td>{entry.firstName}</td>
                                         <td>{entry.lastName}</td>
                                         <td>{entry.email}</td>
+                                        <td><button className="btn btn-primary" onClick={() => this.updateImageClicked(entry.id)}>
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                 className="bi bi-file-person" fill="currentColor"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                      d="M12 1H4a1 1 0 0 0-1 1v10.755S4 11 8 11s5 1.755 5 1.755V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+                                                <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                            </svg></button></td>
                                         <td><button className="btn btn-success" onClick={() => this.updateEntryClicked(entry.id)}>
                                             <svg width="1em" height="1em" viewBox="0 0 16 16"
                                                  className="bi bi-pencil-square" fill="currentColor"

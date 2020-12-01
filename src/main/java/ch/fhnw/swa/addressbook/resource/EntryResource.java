@@ -6,17 +6,14 @@ import ch.fhnw.swa.addressbook.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.io.InputStream;
 import java.net.URI;
 import java.util.List;
+import java.util.logging.Logger;
 
 @CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
 @RestController
@@ -69,6 +66,27 @@ public class EntryResource {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.notFound().build();
+    }
+    private static final Logger logger = Logger.getLogger(EntryResource.class.getName());
+    @PostMapping("/upload/{id}")
+    public ResponseEntity<String> uploadData(@PathVariable long id, @RequestParam("file") MultipartFile file) throws Exception {
+        if (file == null) {
+            throw new RuntimeException("You must select the a file for uploading");
+        }
+        entryservice.updateImage(id, file);
+        InputStream inputStream = file.getInputStream();
+        String originalName = file.getOriginalFilename();
+        String name = file.getName();
+        String contentType = file.getContentType();
+        long size = file.getSize();
+        logger.info("ID: " + id);
+        logger.info("inputStream: " + inputStream);
+        logger.info("originalName: " + originalName);
+        logger.info("name: " + name);
+        logger.info("contentType: " + contentType);
+        logger.info("size: " + size);
+        // Do processing with uploaded file data in Service layer
+        return new ResponseEntity<String>(originalName, HttpStatus.OK);
     }
 
 }

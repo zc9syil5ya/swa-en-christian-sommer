@@ -28,7 +28,10 @@ class EntryDataService {
         console.log('executed create service')
         return axios.post(`${ENTRY_API_URL}/entries`, entry);
     }
-
+    uploadImage(id, data) {
+        console.log('executed create service')
+        return axios.post(`${ENTRY_API_URL}/upload/${id}`, data);
+    }
 }
 
 export default new EntryDataService()

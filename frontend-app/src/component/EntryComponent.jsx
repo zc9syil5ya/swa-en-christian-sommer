@@ -27,7 +27,7 @@ class EntryComponent extends Component {
             return
         }
 
-        EntryDataService.retrieveEntry(this.state.id)
+        EntryDataService.retrieveEntries(this.state.id)
             .then(response => this.setState({
                 firstName: response.data.firstName,
                 lastName: response.data.lastName,
