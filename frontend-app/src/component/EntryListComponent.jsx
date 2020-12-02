@@ -62,9 +62,9 @@ class EntryListComponent extends Component {
                         <thead>
                         <tr>
                             <th></th>
-                            <th>firstName</th>
-                            <th>lastName</th>
-                            <th>email</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>E-Mail</th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -77,7 +77,7 @@ class EntryListComponent extends Component {
                                     <tr key={entry.id}>
                                         <td>
                                             <div>
-                                                    <img  width="70" height="70" class="rounded-circle" src={entry.image} alt="Avatar"/>
+                                                    <img  width="60" height="60" class="rounded-circle" src={entry.image} alt="Avatar"/>
                                             </div>
                                         </td>
                                         <td>{entry.firstName}</td>
@@ -113,7 +113,7 @@ class EntryListComponent extends Component {
                         </tbody>
                     </table>
                     <div className="row">
-                        <button className="btn btn-success" onClick={this.addEntryClicked}>Add</button>
+                        <button className="btn-lg btn-success" onClick={this.addEntryClicked}> Add</button>
                     </div>
                 </div>
             </div>

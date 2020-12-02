@@ -122,7 +122,7 @@ class EntryComponent extends Component {
                                 <label>Phone</label>
                                 <Field className="form-control" type="text" name="phone" />
                             </fieldset>
-                            <button className="btn btn-success" type="submit">Save</button>
+                            <button className="btn-lg btn-success" type="submit">Save</button>
                         </Form>
                     )
                     }

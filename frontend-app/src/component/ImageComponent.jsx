@@ -35,9 +35,12 @@ class ImageComponent extends Component {
         return (
             <div id="container">
                 <h3>Upload a image</h3>
-                <h4>{this.state.msg}</h4>
-                <input onChange={this.onFileChange} type="file"></input>
-                <button disabled={!this.state.file} onClick={this.uploadFileData}>Upload</button>
+                <div className="input-group mb-3">
+                      <input class="form-control" onChange={this.onFileChange} type="file"></input>
+                        <div className="input-group-append">
+                            <button className="btn  btn-success" disabled={!this.state.file} onClick={this.uploadFileData}>Upload</button>
+                        </div>
+                </div>
             </div>
         )
     }

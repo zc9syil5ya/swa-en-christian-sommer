@@ -1,4 +1,18 @@
 @import url(https://unpkg.com/bootstrap@4.1.0/dist/css/bootstrap.min.css);
+
+body{
+  font-size: large;
+  font-family: "Calibri Light", serif;
+
+}
 .App {
   text-align: center;
+
 }
+.title{
+  text-align: center;
+  font-family: Times, serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
