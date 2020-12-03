@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import EntryDataService from '../../../frontend-app/src/service/EntryDataService';
-import {Form} from "formik";
 
 class ImageComponent extends Component {
 
@@ -30,7 +29,6 @@ class ImageComponent extends Component {
                 this.setState({message: error.response.data.message});
                 console.log(error.response.status);
                 console.log(error.response.headers);
-                //this.setState({message: "dsds"});
             }
         });
     }
