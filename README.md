@@ -120,14 +120,14 @@ With a right mouse click on the 'green' test folder all tests can be started wit
 <i>none</i>
 
 #### Other comments:
-1)
-I built the basic Project basic structure  with https://start.spring.io/
+1) I built the basic Project basic structure  with https://start.spring.io/
 
 ![abb2](abb2.png)
 
-2)
-I generated the basic structure of the frontend app with npx.
-`npx create-react-app frontend-app` 
+2) I generated the basic structure of the frontend app with npx. `npx create-react-app frontend-app`
+
+3) UML diagrams and description can be found in the pdf `UML diagrams and description for SWA assignment 20HS 3Ib from 
+   Christian Sommer.pdf` in the main project folder.
 
 #### proud of
 I'm particular proud of: <i>that images can be uploaded and are validated by size and type</i>
