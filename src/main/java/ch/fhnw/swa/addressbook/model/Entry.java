@@ -1,9 +1,5 @@
 package ch.fhnw.swa.addressbook.model;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
@@ -43,6 +39,15 @@ public class Entry {
 
     @Column(name="image")
     private String image;
+
+    public Entry() { }
+
+    public Entry(String firstName, String lastName, String email) {
+        this.id = (long)-1;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;

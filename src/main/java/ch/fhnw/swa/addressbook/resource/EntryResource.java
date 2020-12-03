@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.List;
+import java.util.function.Supplier;
 import java.util.logging.Logger;
 
 @CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
@@ -21,6 +22,9 @@ import java.util.logging.Logger;
 public class EntryResource {
     @Autowired
     private EntryService entryservice;
+
+    private static final Logger logger = Logger.getLogger(EntryResource.class.getName());
+
     //Function gets all entries by calling the url .../entries
     @GetMapping("/entries")
     public List<Entry> getAllEntries() {
@@ -68,7 +72,7 @@ public class EntryResource {
         }
         return ResponseEntity.notFound().build();
     }
-    private static final Logger logger = Logger.getLogger(EntryResource.class.getName());
+
     @PostMapping("/upload/{id}")
     public ResponseEntity<ResponseMessage> uploadData(@PathVariable long id, @RequestParam("file") MultipartFile file) throws Exception {
         if (file == null) {
