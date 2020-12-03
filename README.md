@@ -94,10 +94,11 @@ The following HTTP methods are available on the server side:
 so possible actions are, create an entry, edit an entry, delete entry, add an avatar to an entry, edit avatar on the entry
 over curl or the frontend-app UI. 
 
-To start the `frontend-app`, all dependencies must be resolved. InelliJ usually does this itself.If not, change to the 
-frontend-app directory and run the command  `npm install`.  To start te frontend `npm start` must be executed
+To start the `frontend-app`, all dependencies must be resolved. To do that change to the `frontend-app` directory and run
+the command `npm install`. After the installation the frontend can be started with the command `npm start` 
 
-`C:\Users\aso\Documents\GitHub\swa-en\frontend-app> npm start`
+1) `C:\Users\example\Documents\GitHub\swa-en\frontend-app> npm install`
+2) `C:\Users\example\Documents\GitHub\swa-en\frontend-app> npm start`
 
 
 the frontend can be reached via the url `http://localhost:3000/`. Navigation in the frontend should be self-explanatory.
