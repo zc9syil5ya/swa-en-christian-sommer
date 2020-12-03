@@ -36,7 +36,6 @@ class EntryListComponent extends Component {
                     this.refreshEntries()
                 }
             )
-
     }
 
     addEntryClicked() {
@@ -58,7 +57,7 @@ class EntryListComponent extends Component {
             <div className="container">
                 {this.state.message && <div class="alert alert-success">{this.state.message}</div>}
                 <div className="container">
-                    <table className="table">
+                    <table className="table table-hover">
                         <thead>
                         <tr>
                             <th></th>

@@ -15,4 +15,7 @@ body{
   padding-top: 10px;
   padding-bottom: 10px;
 }
+thead{
+  background-image: linear-gradient(180deg, lightgray, white);
+}
 

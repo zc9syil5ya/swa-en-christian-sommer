@@ -16,28 +16,23 @@ class ImageComponent extends Component {
 
     uploadFileData = (event) => {
         event.preventDefault();
-        //this.setState({message: ''});
         let data = new FormData();
         data.append('file', this.state.file);
         EntryDataService.uploadImage(this.state.id, data).then(response => {
             console.log(response);
             this.setState({message: "File successfully uploaded"});
-            this.props.history.push(`/entries`)
+            setTimeout(() => {this.props.history.push(`/entries`)},1000);
         }).catch( error => {
             if (error.response) {
-                console.log(error.response.data);
                 this.setState({message: error.response.data.message});
-                console.log(error.response.status);
-                console.log(error.response.headers);
             }
         });
     }
-
     render() {
         return (
             <div id="container">
                 <h3>Upload a image</h3>
-                {this.state.message && <div class="alert alert-warning">{this.state.message}</div>}
+                {this.state.message && <div class="alert alert-info">{this.state.message}</div>}
                 <div className="input-group mb-3">
                       <input class="form-control" onChange={this.onFileChange} type="file"></input>
                         <div className="input-group-append">
@@ -47,7 +42,5 @@ class ImageComponent extends Component {
             </div>
         )
     }
-
 }
-
 export default ImageComponent

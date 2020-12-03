@@ -61,7 +61,6 @@ class EntryComponent extends Component {
             phone: values.phone,
             targetDate: values.targetDate
         }
-
         if (this.state.id === -1) {
             EntryDataService.createEntries(entry)
                 .then(() => this.props.history.push('/entries'))
@@ -69,10 +68,8 @@ class EntryComponent extends Component {
             EntryDataService.updateEntries( this.state.id, entry)
                 .then(() => this.props.history.push('/entries'))
         }
-
         console.log(values);
     }
-
     render() {
         let { phone, email, city,zipcode,street,firstName,lastName, id } = this.state
         return (
