@@ -91,6 +91,9 @@ The following HTTP methods are available on the server side:
 * [PUT] `/entries/{id}` - updates an entry by ID.
 * [POST] `/upload/{id}`- post a avatar for the entry by ID.
 
+so possible actions are, create an entry, edit an entry, delete entry, add an avatar to an entry, edit avatar on the entry
+over curl or the frontend-app UI. 
+
 To start the `frontend-app`, all dependencies must be resolved. InelliJ usually does this itself.If not, change to the 
 frontend-app directory and run the command  `npm install`.  To start te frontend `npm start` must be executed
 
