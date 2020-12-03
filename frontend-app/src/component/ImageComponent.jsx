@@ -6,7 +6,7 @@ class ImageComponent extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {file: '', msg: '', id: this.props.match.params.id};
+        this.state = {file: '', message: '', id: this.props.match.params.id};
     }
 
     onFileChange = (event) => {
@@ -17,24 +17,29 @@ class ImageComponent extends Component {
 
     uploadFileData = (event) => {
         event.preventDefault();
-        this.setState({msg: ''});
-
+        //this.setState({message: ''});
         let data = new FormData();
         data.append('file', this.state.file);
         EntryDataService.uploadImage(this.state.id, data).then(response => {
-            console.log("Image successfully uploaded");
-            this.setState({msg: "File successfully uploaded"});
+            console.log(response);
+            this.setState({message: "File successfully uploaded"});
             this.props.history.push(`/entries`)
         }).catch(err => {
-            this.setState({error: err});
-        });
+            console.log(err.data);
+            console.log(err.status);
+            console.log(err.statusText);
+            console.log(err.headers);
 
+           // console.log(err.config);
+           // this.setState({error: err , message:  });
+        });
     }
 
     render() {
         return (
             <div id="container">
                 <h3>Upload a image</h3>
+                {this.state.message && <div class="alert alert-warning">{this.state.message}</div>}
                 <div className="input-group mb-3">
                       <input class="form-control" onChange={this.onFileChange} type="file"></input>
                         <div className="input-group-append">

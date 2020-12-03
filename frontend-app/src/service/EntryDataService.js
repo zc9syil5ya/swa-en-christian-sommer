@@ -29,7 +29,7 @@ class EntryDataService {
         return axios.post(`${ENTRY_API_URL}/entries`, entry);
     }
     uploadImage(id, data) {
-        console.log('executed create service')
+        console.log('executed upload service')
         return axios.post(`${ENTRY_API_URL}/upload/${id}`, data);
     }
 }
