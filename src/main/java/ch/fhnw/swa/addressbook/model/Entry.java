@@ -21,9 +21,6 @@ public class Entry {
     private Long id;
 
     @Column(name="firstname")
-    @NotNull(message = "Please provide first Name")
-    @NotEmpty(message = "Please provide first Name")
-    @Pattern(regexp = "^[a-zA-Z][a-zA-Z0-9-]*$", message = "first name must be alphanumeric and start with character")
     private String firstName;
 
     @Column(name="lastname")

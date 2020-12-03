@@ -1,6 +1,7 @@
 package ch.fhnw.swa.addressbook.resource;
 
 import ch.fhnw.swa.addressbook.exception.EntryNotFoundException;
+import ch.fhnw.swa.addressbook.exception.ResponseMessage;
 import ch.fhnw.swa.addressbook.model.Entry;
 import ch.fhnw.swa.addressbook.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,24 +70,16 @@ public class EntryResource {
     }
     private static final Logger logger = Logger.getLogger(EntryResource.class.getName());
     @PostMapping("/upload/{id}")
-    public ResponseEntity<String> uploadData(@PathVariable long id, @RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseEntity<ResponseMessage> uploadData(@PathVariable long id, @RequestParam("file") MultipartFile file) throws Exception {
         if (file == null) {
             throw new RuntimeException("You must select the a file for uploading");
         }
-        entryservice.updateImage(id, file);
-        InputStream inputStream = file.getInputStream();
-        String originalName = file.getOriginalFilename();
-        String name = file.getName();
         String contentType = file.getContentType();
-        long size = file.getSize();
-        logger.info("ID: " + id);
-        logger.info("inputStream: " + inputStream);
-        logger.info("originalName: " + originalName);
-        logger.info("name: " + name);
-        logger.info("contentType: " + contentType);
-        logger.info("size: " + size);
-        // Do processing with uploaded file data in Service layer
-        return new ResponseEntity<String>(originalName, HttpStatus.OK);
+        if (contentType.equals("image/png") || contentType.equals("image/jpeg") || contentType.equals("image/gif")){
+            entryservice.updateImage(id, file);
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("File successfully uploaded !"));
+        }else{
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ResponseMessage("Wrong file type. Upload only jpg,gif and png !"));
+        }
     }
-
 }

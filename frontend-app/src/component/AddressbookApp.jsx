@@ -12,7 +12,7 @@ class AddressbookApp extends Component {
                 <>
                     <div className={"title"}>
                         <img width="120"  src={logo} alt="Logo" />
-                        <h1>address book application</h1></div>
+                        <h1>~ address book application ~</h1></div>
 
                     <Switch>
                         <Route path="/" exact component={EntryListComponent} />

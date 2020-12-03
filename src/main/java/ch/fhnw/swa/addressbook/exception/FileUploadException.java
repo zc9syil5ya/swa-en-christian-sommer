@@ -13,17 +13,4 @@ public class FileUploadException extends ResponseEntityExceptionHandler {
     public ResponseEntity<ResponseMessage> handleMaxSizeException(MaxUploadSizeExceededException exc) {
         return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body(new ResponseMessage("File too large!"));
     }
-    public class ResponseMessage {
-        private String message;
-        public ResponseMessage(String message) {
-            this.message = message;
-        }
-        public String getMessage() {
-            return message;
-        }
-        public void setMessage(String message) {
-            this.message = message;
-        }
-
-    }
 }

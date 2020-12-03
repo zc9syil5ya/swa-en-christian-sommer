@@ -14,7 +14,8 @@ class EntryComponent extends Component {
         zipcode: '',
         city: '',
         email: '',
-        phone: ''
+        phone: '',
+        message:''
     }
     this.onSubmit = this.onSubmit.bind(this)
     this.validate = this.validate.bind(this)
@@ -40,13 +41,18 @@ class EntryComponent extends Component {
     }
 
     validate(values) {
-        let errors = {}
-        if (!values.email) {
-            errors.email = 'Enter a Description'
-        } else if (values.email.length < 5) {
-            errors.email = 'Enter at least 5 Characters in Description'
+        const errors = {};
+        const emailPattern = /(.+)@(.+){2,}\.(.+){2,}/;
+        if(!values.firstName){
+            errors.firstName = 'Enter a Firstname';
         }
-        return errors
+        if(!values.lastName){
+            errors.lastName = 'Enter a Lastname';
+        }
+        if (!emailPattern.test(values.email)) {
+            errors.email = 'Enter a valid email';
+        }
+        return errors;
     }
 
     onSubmit(values) {
@@ -85,8 +91,9 @@ class EntryComponent extends Component {
                         enableReinitialize={true}
                     >{(props) => (
                         <Form>
-                            <ErrorMessage name="description" component="div"
-                                          className="alert alert-warning" />
+                            <ErrorMessage name="firstName" component="div" className="alert alert-warning" />
+                            <ErrorMessage name="lastName" component="div" className="alert alert-warning" />
+                            <ErrorMessage name="email" component="div" className="alert alert-warning" />
                             <fieldset className="form-group">
                                 <label>Id</label>
                                 <Field className="form-control" type="text" name="id" disabled />
