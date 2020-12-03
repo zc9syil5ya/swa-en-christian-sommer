@@ -120,10 +120,12 @@ With a right mouse click on the 'green' test folder all tests can be started wit
 <i>none</i>
 
 #### Other comments:
+1)
 I built the basic Project basic structure  with https://start.spring.io/
 
 ![abb2](abb2.png)
 
+2)
 I generated the basic structure of the frontend app with npx.
 `npx create-react-app frontend-app` 
 
