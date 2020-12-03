@@ -116,16 +116,18 @@ All test tests are stored in the test directory `src/test/java`. These can be st
 With a right mouse click on the 'green' test folder all tests can be started with the menu item 'Run all tests'.
 
 
-External contributions: <i>none</i>
+#### External contributions: 
+<i>none</i>
 
-Other comments:
+#### Other comments:
 I built the basic Project basic structure  with https://start.spring.io/
+
 ![abb2](abb2.png)
 
 I generated the basic structure of the frontend app with npx.
 `npx create-react-app frontend-app` 
 
-
+#### proud of
 I'm particular proud of: <i>that images can be uploaded and are validated by size and type</i>
 
 ## Project grading
