@@ -43,39 +43,83 @@ class EntryResourceTest {
         List<Entry> entries = entryresource.getAllEntries();
         logger.info(entries.toString());
         Assert.assertTrue(entries.size() == 3);
-        Entry entry = new Entry("Paul","Panzer","paul@panzer.net");
+        Entry entry = new Entry("Paul", "Panzer", "paul@panzer.net");
         HttpEntity<Entry> httpentity = new HttpEntity<>(entry);
         ResponseEntity<Entry> response = restTemplate.exchange(
                 createURLWithPort("/entries"),
                 HttpMethod.POST, httpentity, Entry.class);
         logger.info(response.toString());
-
         entries = entryresource.getAllEntries();
         logger.info(entries.toString());
         Assert.assertTrue(entries.size() == 4);
     }
 
     @Test
-    void getEntry() { ;
+    void getEntry() {
+        Entry entry = new Entry("Paul", "Panzer", "paul@panzer.net");
+        entry.setEmail("FESTERBESTERTESTER@fhnw.ch");
+        HttpEntity<Entry> httpentity = new HttpEntity<>(entry);
+        ResponseEntity<Entry> response = restTemplate.exchange(
+                createURLWithPort("/entries/" + entry.getId()),
+                HttpMethod.PUT, httpentity, Entry.class);
+        logger.info(response.toString());
     }
 
     @Test
     void createEntry() {
-        Entry entry = new Entry("Paul","Panzer","paul@panzer.net");
-        HttpEntity<Entry> httpentity = new HttpEntity<>(entry);
+        List<Entry> entries = entryresource.getAllEntries();
+        logger.info(entries.toString());
+        Assert.assertTrue(entries.size() == 3);
+        HttpEntity<Long> httpentity = new HttpEntity<>(3L);
         ResponseEntity<Entry> response = restTemplate.exchange(
-                createURLWithPort("/entries"),
-                HttpMethod.POST, httpentity, Entry.class);
+                createURLWithPort("/entries/3"),
+                HttpMethod.GET, httpentity, Entry.class);
         logger.info(response.toString());
-        Assert.assertTrue(response.getStatusCode().value() == 201);
+        Assert.assertTrue(response.getStatusCode().value() == 200);
+        logger.info("Test ID 3 E-Mail: " + response.getBody().getEmail());
+        Assert.assertTrue(response.getBody().getEmail().equals("Erlfried@gmail.com"));
     }
 
     @Test
     void updateEntry() {
+        Entry entry = new Entry("Paul", "Panzer", "paul@panzer.net");
+        entry.setEmail("FESTERBESTERTESTER@fhnw.ch");
+        HttpEntity<Entry> httpentity = new HttpEntity<>(entry);
+        ResponseEntity<Entry> response = restTemplate.exchange(
+                createURLWithPort("/entries/" + entry.getId()),
+                HttpMethod.PUT, httpentity, Entry.class);
+        logger.info(response.toString());
+        Assert.assertTrue(response.getStatusCode().value() == 200);
+        List<Entry> entries = entryresource.getAllEntries();
+        logger.info(entries.toString());
+        Assert.assertTrue(entries.size() == 4);
+        Assert.assertTrue(entries.get(3).getEmail().equals("FESTERBESTERTESTER@fhnw.ch"));
     }
 
     @Test
     void deleteEntry() {
+        List<Entry> entries = entryresource.getAllEntries();
+        logger.info(entries.toString());
+        Assert.assertTrue(entries.size() == 3);
+        HttpEntity<Long> httpentity = new HttpEntity<>(3L);
+        ResponseEntity<Void> response = restTemplate.exchange(
+                createURLWithPort("/entries/3"),
+                HttpMethod.DELETE, httpentity, Void.class);
+        entries = entryresource.getAllEntries();
+        logger.info(entries.toString());
+        //test DB entry size
+        Assert.assertTrue(entries.size() == 2);
+        logger.info(response.getStatusCode().toString());
+        // test response
+        Assert.assertTrue(response.getStatusCode().value() == 204);
+        //try delete 3 again.
+        response = restTemplate.exchange(
+                createURLWithPort("/entries/3"),
+                HttpMethod.DELETE, httpentity, Void.class);
+        logger.info(response.getStatusCode().toString());
+        //test NOT_FOUND
+        Assert.assertTrue(response.getStatusCode().value() == 404);
+
     }
 
     private String createURLWithPort(String uri) {

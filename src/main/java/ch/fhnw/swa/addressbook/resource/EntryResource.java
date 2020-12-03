@@ -37,12 +37,15 @@ public class EntryResource {
         try {
             return entryservice.getEntryById(id);
         } catch (EntryNotFoundException e) {
-            e.printStackTrace();
+            logger.info(e.getMessage());
         }
         return null;
     }
-
-    //Function creates an entry when calling the url .../entry
+    /**
+     * Function creates an entry when calling the url .../entry
+     * @param entry RequestBody address book entry
+     * @return uri /entries/{id} id of new created entry
+     */
     @PostMapping("/entries")
     public ResponseEntity<Entry> createEntry(@RequestBody Entry entry) {
         Entry createdEntry = entryservice.createOrUpdateEntry(entry);
@@ -55,7 +58,7 @@ public class EntryResource {
     @PutMapping("/entries/{id}")
     public ResponseEntity<Entry> updateEntry( @PathVariable long id, @RequestBody Entry entry) {
         Entry updated = entryservice.createOrUpdateEntry(entry);
-        return new ResponseEntity<Entry>(entry, HttpStatus.OK);
+        return new ResponseEntity<Entry>(updated, HttpStatus.OK);
     }
 
     //Function deletes an entry when calling the url .../entry/{id}
@@ -65,7 +68,7 @@ public class EntryResource {
         try {
             en = entryservice.deleteEntryById(id);
         } catch (EntryNotFoundException e) {
-            e.printStackTrace();
+            logger.info(e.getMessage());
         }
         if (en != null) {
             return ResponseEntity.noContent().build();
