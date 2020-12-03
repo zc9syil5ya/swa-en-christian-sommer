@@ -24,14 +24,14 @@ class ImageComponent extends Component {
             console.log(response);
             this.setState({message: "File successfully uploaded"});
             this.props.history.push(`/entries`)
-        }).catch(err => {
-            console.log(err.data);
-            console.log(err.status);
-            console.log(err.statusText);
-            console.log(err.headers);
-
-           // console.log(err.config);
-           // this.setState({error: err , message:  });
+        }).catch( error => {
+            if (error.response) {
+                console.log(error.response.data);
+                this.setState({message: error.response.data.message});
+                console.log(error.response.status);
+                console.log(error.response.headers);
+                //this.setState({message: "dsds"});
+            }
         });
     }
 
