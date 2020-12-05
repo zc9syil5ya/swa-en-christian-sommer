@@ -70,9 +70,11 @@ You will have to use a repository (or database), where you will _persist_ the en
 * IntelliJ IDE (recommended)
 
 #### Database location
-Set the path for the database at `spring.datasource.url=jdbc:h2:file:C:/temp` at the project `application.properties`.
+Set the path for the database at `spring.datasource.url=jdbc:h2:file:C:/temp/prod` at the project `application.properties`.
 It is in `src/main/resources`. For the test database the same must be configured. The test `application.properties` file
-is located in `/src/test/resources`.
+is located in `/src/test/resources`(`spring.datasource.url=jdbc:h2:file:C:/temp/test` ).
+
+`prod` database is the main database and `test` ist the database for the tests. 
 
 For Linux,UNIX or macOS systems  the path is probably different. For example:
 spring.datasource.url=jdbc:h2:file:`/path/to/prod` and `/path/to/test` in the test directory.
