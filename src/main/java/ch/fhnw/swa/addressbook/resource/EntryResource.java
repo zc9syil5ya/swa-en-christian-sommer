@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 import java.util.logging.Logger;
@@ -94,12 +96,12 @@ public class EntryResource {
      * @param id
      * @param file Image File
      * @return ResponseEntity
-     * @throws RuntimeException,Exception
+     * @throws IOException
      */
     @PostMapping("/upload/{id}")
-    public ResponseEntity<ResponseMessage> uploadData(@PathVariable long id, @RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseEntity<ResponseMessage> uploadData(@PathVariable long id, @RequestParam("file") MultipartFile file) throws IOException {
         if (file == null) {
-            throw new RuntimeException("You must select the a file for uploading");
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ResponseMessage("You must select the a file for uploading !"));
         }
         String contentType = file.getContentType();
         // allow only gif,png and jpeg

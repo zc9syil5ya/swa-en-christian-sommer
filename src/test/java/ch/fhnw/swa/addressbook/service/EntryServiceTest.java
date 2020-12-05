@@ -6,6 +6,7 @@ import ch.fhnw.swa.addressbook.model.Entry;
 import ch.fhnw.swa.addressbook.resource.EntryResource;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -60,7 +61,9 @@ class EntryServiceTest {
         entryservice.createOrUpdateEntry(entry);
         Entry en = entryservice.getEntryById(4L);
         Assert.assertTrue(en.getEmail().equals("paul@panzer.net"));
-
+        Assertions.assertThrows(EntryNotFoundException.class, () -> {
+            entryservice.getEntryById(5L);
+        });
     }
 
     @Test
