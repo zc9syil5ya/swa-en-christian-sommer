@@ -92,7 +92,7 @@ the menu bar.
 
 ![abb1.png](abb1.png)
 
-The REST API can reached with curl.
+The server can reached with curl.
 example:
 `http://localhost:8080/entries` and `http://localhost:8080/entries/1`
 
