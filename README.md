@@ -69,6 +69,17 @@ You will have to use a repository (or database), where you will _persist_ the en
 * Node.Js >15
 * IntelliJ IDE (recommended)
 
+#### Database location
+Set the path for the database at `spring.datasource.url=jdbc:h2:file:C:/temp` at the project `application.properties`.
+It is in `src/main/resources`. For the test database the same must be configured. The test `application.properties` file
+is located in `/src/test/resources`.
+
+For Linux,UNIX or macOS systems  the path is probably different. For example:
+spring.datasource.url=jdbc:h2:file:`/path/to/prod` and `/path/to/test` in the test directory.
+
+The PROD database is accessible as long as the server is running at `http://localhost:8080/h2`.
+User is `sa` and no password. Path to the database is the previously set path.
+
 ### How to start the project:
 The application is divided into frontend and backend. The frontend is mostly implemented with React while the backend is 
 run with SpringBoot and Hibernate as a REST API.To store data i decided to use a h2 database.
@@ -103,16 +114,7 @@ the command `npm install`. After the installation the frontend can be started wi
 
 the frontend can be reached via the url `http://localhost:3000/`. Navigation in the frontend should be self-explanatory.
 
-#### Database location
-Set the path for the database at `spring.datasource.url=jdbc:h2:file:C:/temp` at the project `application.properties`.
-It is in `src/main/resources`. For the test database the same must be configured. The test `application.properties` file
-is located in `/src/test/resources`.
 
-For Linux,UNIX or macOS systems  the path is probably different. For example:
-spring.datasource.url=jdbc:h2:file:`/path/to/prod` and `/path/to/test` in the test directory.
-
-The PROD database is accessible as long as the server is running at `http://localhost:8080/h2`.
-User is `sa` and no password. Path to the database is the previously set path.
 
 #### Test the project
 All test tests are stored in the test directory `src/test/java`. These can be started individually or all together.
