@@ -10,14 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.io.InputStream;
 import java.net.URI;
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.logging.Logger;
 
-@CrossOrigin(origins = { "http://localhost:3000", "http://localhost:4200" })
+@CrossOrigin(origins = { "http://localhost:3000" })
 @RestController
 public class EntryResource {
     @Autowired
@@ -25,13 +22,20 @@ public class EntryResource {
 
     private static final Logger logger = Logger.getLogger(EntryResource.class.getName());
 
-    //Function gets all entries by calling the url .../entries
+    /**
+     * Function gets all entries by calling the url .../entries
+     * @return List of Entries
+     */
     @GetMapping("/entries")
     public List<Entry> getAllEntries() {
         return entryservice.getAllEntries();
     }
 
-    //Function gets an entry by ID when calling the url .../entry/{id}
+    /**
+     * Function gets an entry by ID when calling the url .../entry/{id}
+     * @param id
+     * @return Entry by id
+     */
     @GetMapping("/entries/{id}")
     public Entry getEntry(@PathVariable long id) {
         try {
@@ -54,14 +58,23 @@ public class EntryResource {
         return ResponseEntity.created(uri).build();
     }
 
-    //Function updates an entry when calling the url .../entry/{id}
+    /**
+     * Function updates an entry when calling the url .../entry/{id}
+     * @param id
+     * @param entry
+     * @return
+     */
     @PutMapping("/entries/{id}")
     public ResponseEntity<Entry> updateEntry( @PathVariable long id, @RequestBody Entry entry) {
         Entry updated = entryservice.createOrUpdateEntry(entry);
         return new ResponseEntity<Entry>(updated, HttpStatus.OK);
     }
 
-    //Function deletes an entry when calling the url .../entry/{id}
+    /**
+     * Function deletes an entry when calling the url .../entry/{id}
+     * @param id
+     * @return ResponseEntity
+     */
     @DeleteMapping("/entries/{id}")
     public ResponseEntity<Void> deleteEntry(@PathVariable long id) {
         Entry en = null;
@@ -76,12 +89,20 @@ public class EntryResource {
         return ResponseEntity.notFound().build();
     }
 
+    /**
+     * Function handles upload for entity when calling the url .../upload/{id}
+     * @param id
+     * @param file Image File
+     * @return ResponseEntity
+     * @throws RuntimeException,Exception
+     */
     @PostMapping("/upload/{id}")
     public ResponseEntity<ResponseMessage> uploadData(@PathVariable long id, @RequestParam("file") MultipartFile file) throws Exception {
         if (file == null) {
             throw new RuntimeException("You must select the a file for uploading");
         }
         String contentType = file.getContentType();
+        // allow only gif,png and jpeg
         if (contentType.equals("image/png") || contentType.equals("image/jpeg") || contentType.equals("image/gif")){
             entryservice.updateImage(id, file);
             return ResponseEntity.status(HttpStatus.OK).body(new ResponseMessage("File successfully uploaded !"));

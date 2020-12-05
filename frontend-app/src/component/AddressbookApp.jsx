@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EntryListComponent from './EntryListComponent';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import EntryComponent from './EntryComponent';
 import ImageComponent from './ImageComponent';
 import logo from '../utils/contact-icon.png';

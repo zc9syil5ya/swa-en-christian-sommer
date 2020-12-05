@@ -8,10 +8,10 @@ class EntryListComponent extends Component {
             entries: [],
             message: null
         }
+        this.refreshEntries = this.refreshEntries.bind(this)
         this.deleteEntryClicked = this.deleteEntryClicked.bind(this)
         this.updateEntryClicked = this.updateEntryClicked.bind(this)
         this.addEntryClicked = this.addEntryClicked.bind(this)
-        this.refreshEntries = this.refreshEntries.bind(this)
     }
 
     componentDidMount() {
@@ -80,9 +80,9 @@ class EntryListComponent extends Component {
                                                  alt="Avatar"/>
                                         </div>
                                     </td>
-                                    <td>{entry.firstName}</td>
-                                    <td>{entry.lastName}</td>
-                                    <td>{entry.email}</td>
+                                    <td>{entry.firstName} {entry.lastName}</td>
+                                    <td>{entry.street}<br />{entry.zipcode} {entry.city}</td>
+                                    <td>{entry.email}<br />{entry.phone}</td>
                                     <td>
                                         <button className="btn btn-primary"
                                                 onClick={() => this.updateImageClicked(entry.id)}>
