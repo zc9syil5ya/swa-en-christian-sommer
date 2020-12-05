@@ -1,25 +1,26 @@
-import React, { Component } from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React, {Component} from 'react'
+import {Formik, Form, Field, ErrorMessage} from 'formik';
 import EntryDataService from '../../../frontend-app/src/service/EntryDataService';
 
+class EntryComponent extends Component {
 
-class EntryComponent extends Component { 
     constructor(props) {
-    super(props)
-    this.state = {
-        id: this.props.match.params.id,
-        firstName: '',
-        lastName: '',
-        street: '',
-        zipcode: '',
-        city: '',
-        email: '',
-        phone: '',
-        message:''
+        super(props)
+        this.state = {
+            id: this.props.match.params.id,
+            firstName: '',
+            lastName: '',
+            street: '',
+            zipcode: '',
+            city: '',
+            email: '',
+            phone: '',
+            message: ''
+        }
+
+        this.onSubmit = this.onSubmit.bind(this)
+        this.validate = this.validate.bind(this)
     }
-    this.onSubmit = this.onSubmit.bind(this)
-    this.validate = this.validate.bind(this)
-}
 
     componentDidMount() {
         console.log(this.state.id)
@@ -43,10 +44,10 @@ class EntryComponent extends Component {
     validate(values) {
         const errors = {};
         const emailPattern = /(.+)@(.+){2,}\.(.+){2,}/;
-        if(!values.firstName){
+        if (!values.firstName) {
             errors.firstName = 'Enter a Firstname';
         }
-        if(!values.lastName){
+        if (!values.lastName) {
             errors.lastName = 'Enter a Lastname';
         }
         if (!emailPattern.test(values.email)) {
@@ -71,19 +72,20 @@ class EntryComponent extends Component {
             EntryDataService.createEntries(entry)
                 .then(() => this.props.history.push('/entries'))
         } else {
-            EntryDataService.updateEntries( this.state.id, entry)
+            EntryDataService.updateEntries(this.state.id, entry)
                 .then(() => this.props.history.push('/entries'))
         }
         console.log(values);
     }
+
     render() {
-        let { phone, email, city,zipcode,street,firstName,lastName, id } = this.state
+        let {phone, email, city, zipcode, street, firstName, lastName, id} = this.state
         return (
             <div>
                 <h3>Entry</h3>
                 <div className="container">
                     <Formik
-                        initialValues={{ phone, email, city,zipcode,street,firstName,lastName, id  }}
+                        initialValues={{phone, email, city, zipcode, street, firstName, lastName, id}}
                         onSubmit={this.onSubmit}
                         validateOnChange={false}
                         validateOnBlur={false}
@@ -91,40 +93,39 @@ class EntryComponent extends Component {
                         enableReinitialize={true}
                     >{(props) => (
                         <Form>
-                            <ErrorMessage name="firstName" component="div" className="alert alert-warning" />
-                            <ErrorMessage name="lastName" component="div" className="alert alert-warning" />
-                            <ErrorMessage name="email" component="div" className="alert alert-warning" />
+                            <ErrorMessage name="firstName" component="div" className="alert alert-warning"/>
+                            <ErrorMessage name="lastName" component="div" className="alert alert-warning"/>
+                            <ErrorMessage name="email" component="div" className="alert alert-warning"/>
                             <fieldset className="form-group">
-                                <label>Id</label>
-                                <Field className="form-control" type="text" name="id" disabled />
+                                <Field className="form-control" type="hidden" name="id" disabled/>
                             </fieldset>
                             <fieldset className="form-group">
                                 <label>FirstName</label>
-                                <Field className="form-control" type="text" name="firstName" />
+                                <Field className="form-control" type="text" name="firstName"/>
                             </fieldset>
                             <fieldset className="form-group">
                                 <label>LastName</label>
-                                <Field className="form-control" type="text" name="lastName" />
+                                <Field className="form-control" type="text" name="lastName"/>
                             </fieldset>
                             <fieldset className="form-group">
                                 <label>Street</label>
-                                <Field className="form-control" type="text" name="street" />
+                                <Field className="form-control" type="text" name="street"/>
                             </fieldset>
                             <fieldset className="form-group">
                                 <label>Zipcode</label>
-                                <Field className="form-control" type="text" name="zipcode" />
+                                <Field className="form-control" type="text" name="zipcode"/>
                             </fieldset>
                             <fieldset className="form-group">
                                 <label>City</label>
-                                <Field className="form-control" type="text" name="city" />
+                                <Field className="form-control" type="text" name="city"/>
                             </fieldset>
                             <fieldset className="form-group">
                                 <label>E-Mail</label>
-                                <Field className="form-control" type="text" name="email" />
+                                <Field className="form-control" type="text" name="email"/>
                             </fieldset>
                             <fieldset className="form-group">
                                 <label>Phone</label>
-                                <Field className="form-control" type="text" name="phone" />
+                                <Field className="form-control" type="text" name="phone"/>
                             </fieldset>
                             <button className="btn-lg btn-success" type="submit">Save</button>
                         </Form>

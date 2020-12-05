@@ -103,7 +103,6 @@ the command `npm install`. After the installation the frontend can be started wi
 
 the frontend can be reached via the url `http://localhost:3000/`. Navigation in the frontend should be self-explanatory.
 
-
 #### Database location
 Set the path for the database at `spring.datasource.url=jdbc:h2:file:C:/temp` at the project `application.properties`.
 It is in `src/main/resources`. For the test database the same must be configured. The test `application.properties` file

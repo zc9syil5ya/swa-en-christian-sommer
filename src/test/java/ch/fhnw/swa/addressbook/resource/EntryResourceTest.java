@@ -49,7 +49,7 @@ class EntryResourceTest {
     /**
      * Test get all entry
      */
-    void t1getAllEntries() {
+    void getAllEntries() {
         List<Entry> entries = entryresource.getAllEntries();
         logger.info(entries.toString());
         Assert.assertTrue(entries.size() == 3);
@@ -68,7 +68,7 @@ class EntryResourceTest {
     /**
      * Test get an entry
      */
-    void t1getEntry() {
+    void getEntry() {
         Entry entry = new Entry("Paul", "Panzer", "paul@panzer.net");
         entry.setEmail("FESTERBESTERTESTER@fhnw.ch");
         HttpEntity<Entry> httpentity = new HttpEntity<>(entry);
@@ -82,7 +82,7 @@ class EntryResourceTest {
     /**
      * Test create an new entry
      */
-    void t3createEntry() {
+    void createEntry() {
         List<Entry> entries = entryresource.getAllEntries();
         logger.info(entries.toString());
         Assert.assertTrue(entries.size() == 3);
@@ -100,7 +100,7 @@ class EntryResourceTest {
     /**
      * Test update an existing entry
      */
-    void t4updateEntry() {
+    void updateEntry() {
         Entry entry = new Entry("Paul", "Panzer", "paul@panzer.net");
         entry.setEmail("FESTERBESTERTESTER@fhnw.ch");
         HttpEntity<Entry> httpentity = new HttpEntity<>(entry);
@@ -119,7 +119,7 @@ class EntryResourceTest {
     /**
      * Test delete an entry
      */
-    void t5deleteEntry() {
+    void deleteEntry() {
         List<Entry> entries = entryresource.getAllEntries();
         logger.info(entries.toString());
         Assert.assertTrue(entries.size() == 3);
@@ -147,7 +147,7 @@ class EntryResourceTest {
     /**
      * Test upload
      */
-    void t6uploadDataTest() throws IOException {
+    void uploadDataTest() throws IOException {
         List<Entry> entries = entryresource.getAllEntries();
         logger.info(entries.toString());
         Assert.assertTrue(entries.size() == 3);

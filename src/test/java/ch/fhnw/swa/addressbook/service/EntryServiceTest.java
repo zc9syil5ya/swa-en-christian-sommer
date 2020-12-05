@@ -43,7 +43,7 @@ class EntryServiceTest {
     private static final Logger logger = Logger.getLogger(EntryResource.class.getName());
 
     @Test
-    void t1getAllEntries() {
+    void getAllEntries() {
         List<Entry> entries = entryservice.getAllEntries();
         Assert.assertTrue(entries.size() == 3);
         Entry entry = new Entry("Paul", "Panzer", "paul@panzer.net");
@@ -53,7 +53,7 @@ class EntryServiceTest {
     }
 
     @Test
-    void t2getEntryById() throws EntryNotFoundException {
+    void getEntryById() throws EntryNotFoundException {
         List<Entry> entries = entryservice.getAllEntries();
         Assert.assertTrue(entries.size() == 3);
         Entry entry = new Entry("Paul", "Panzer", "paul@panzer.net");
@@ -64,7 +64,7 @@ class EntryServiceTest {
     }
 
     @Test
-    void t3deleteEntryById() throws EntryNotFoundException {
+    void deleteEntryById() throws EntryNotFoundException {
         List<Entry> entries = entryservice.getAllEntries();
         Assert.assertTrue(entries.size() == 3);
         entryservice.deleteEntryById(1L);
@@ -75,7 +75,7 @@ class EntryServiceTest {
     }
 
     @Test
-    void t4createOrUpdateEntry() throws EntryNotFoundException {
+    void createOrUpdateEntry() throws EntryNotFoundException {
         List<Entry> entries = entryservice.getAllEntries();
         Assert.assertTrue(entries.size() == 3);
         Entry entry = new Entry("Paul", "Panzer", "paul@panzer.net");
@@ -95,7 +95,7 @@ class EntryServiceTest {
     }
 
     @Test
-    void t5updateImage() throws IOException, EntryNotFoundException {
+    void updateImage() throws IOException, EntryNotFoundException {
         String img = entryservice.getEntryById(1L).getImage();
         MockMultipartFile uploadFile = new MockMultipartFile("test.txt", "content".getBytes());
         entryservice.updateImage(1,uploadFile);
