@@ -74,7 +74,7 @@ The application is divided into frontend and backend. The frontend is mostly imp
 run with SpringBoot and Hibernate as a REST API.To store data i decided to use a h2 database.
 
 To start the backend, all maven dependencies must be resolved. InelliJ usually does this itself. To start it run the
-AddressbookApplication.java class in the package ch.fhnw.swa.addressbook.Another possibility is to start the server from 
+`AddressbookApplication.java` class in the package `ch.fhnw.swa.addressbook`.Another possibility is to start the server from 
 the menu bar.
 
 ![abb1.png](abb1.png)
@@ -108,8 +108,8 @@ Set the path for the database at `spring.datasource.url=jdbc:h2:file:C:/temp` at
 It is in `src/main/resources`. For the test database the same must be configured. The test `application.properties` file
 is located in `/src/test/resources`.
 
-For Linux or UNIX systems the path would have to be different. For example:
-spring.datasource.url=jdbc:h2:file:`~/home/public/prod` and `~/home/public/test` in the test directory
+For Linux,UNIX or macOS systems  the path is probably different. For example:
+spring.datasource.url=jdbc:h2:file:`/path/to/prod` and `/path/to/test` in the test directory.
 
 The PROD database is accessible as long as the server is running at `http://localhost:8080/h2`.
 User is `sa` and no password. Path to the database is the previously set path.
@@ -117,7 +117,7 @@ User is `sa` and no password. Path to the database is the previously set path.
 #### Test the project
 All test tests are stored in the test directory `src/test/java`. These can be started individually or all together.
 With a right mouse click on the 'green' test folder all tests can be started with the menu item 'Run all tests'.
-
+![abb3.png](abb3.png)
 
 #### External contributions: 
 <i>none</i>
