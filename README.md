@@ -103,6 +103,7 @@ the frontend can be reached via the url `http://localhost:3000/`. Navigation in 
 #### Test the project
 
 All tests can be started with a right mouse click `Run 'All Tests'` on the `java` folder in the test directory of the web module.
+
 ![abb1.png](abb1.png)
 
 #### External contributions: 
