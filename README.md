@@ -73,9 +73,10 @@ You will have to use a repository (or database), where you will _persist_ the en
 
 ### How to start the project:
 
-####BACKEND
-To start the <b>backend</b> run `AddressBookApplication.java` in the `web` module (`package ch.fhnw.swa.web`).
+#### BACKEND
+Clean and package as jar files with `mvn clean install`. 
 
+To start the <b>backend</b> run `AddressBookApplication.java` in the `web` module (`package ch.fhnw.swa.web`).
 
 The server can reached with over:
 `http://localhost:8080/entries` and `http://localhost:8080/entries/1`
@@ -91,7 +92,7 @@ The following HTTP methods are available on the server side:
 so possible actions are, create an entry, edit an entry, delete entry, add an avatar to an entry, edit avatar on the entry
 over curl or the frontend-app UI. 
 
-####Frontend
+#### Frontend
 
 To start the <b>frontend</b> run `npm install` and then `npm start` module (`frontend-app` folder).
 
