@@ -67,39 +67,23 @@ You will have to use a repository (or database), where you will _persist_ the en
 ### Requirements
 * JDK 14
 * Node.Js >15
+* Maven
 * IntelliJ IDE (recommended)
 
-#### Database location
-Set the path for the database at `spring.datasource.url=jdbc:h2:file:C:/temp/prod` at the project `application.properties`.
-It is in `src/main/resources`. For the test database the same must be configured. The test `application.properties` file
-is located in `/src/test/resources`(`spring.datasource.url=jdbc:h2:file:C:/temp/test` ).
-
-`prod` database is the main database and `test` ist the database for the tests. 
-
-For Linux,UNIX or macOS systems  the path is probably different. For example:
-spring.datasource.url=jdbc:h2:file:`/path/to/prod` and `/path/to/test` in the test directory.
-
-The PROD database is accessible as long as the server is running at `http://localhost:8080/h2`.
-User is `sa` and no password. Path to the database is the previously set path.
 
 ### How to start the project:
-The application is divided into frontend and backend. The frontend is mostly implemented with React while the backend is 
-run with SpringBoot and Hibernate as a REST API.To store data i decided to use a h2 database.
 
-To start the backend, all maven dependencies must be resolved. InelliJ usually does this itself. To start it run the
-`AddressbookApplication.java` class in the package `ch.fhnw.swa.addressbook`.Another possibility is to start the server from 
-the menu bar.
+####BACKEND
+To start the <b>backend</b> run `AddressBookApplication.java` in the `web` module (`package ch.fhnw.swa.web`).
 
-![abb1.png](abb1.png)
 
-The server can reached with curl.
-example:
+The server can reached with over:
 `http://localhost:8080/entries` and `http://localhost:8080/entries/1`
 
 The following HTTP methods are available on the server side:
 
 * [GET]  `/entries` - returns all entries in the address book.
-* [GET]  `/entries/{id}` - returns a entra by ID.
+* [GET]  `/entries/{id}` - returns an entry by ID.
 * [DELETE] `/entries/{id}` - deletes an entry by ID.
 * [PUT] `/entries/{id}` - updates an entry by ID.
 * [POST] `/upload/{id}`- post a avatar for the entry by ID.
@@ -107,33 +91,27 @@ The following HTTP methods are available on the server side:
 so possible actions are, create an entry, edit an entry, delete entry, add an avatar to an entry, edit avatar on the entry
 over curl or the frontend-app UI. 
 
-To start the `frontend-app`, all dependencies must be resolved. To do that change to the `frontend-app` directory in the Terminal 
-and run the command `npm install`. After the installation the frontend can be started with the command `npm start` 
+####Frontend
 
-1) `C:\Users\example\Documents\GitHub\swa-en\frontend-app> npm install`
-2) `C:\Users\example\Documents\GitHub\swa-en\frontend-app> npm start`
+To start the <b>frontend</b> run `npm install` and then `npm start` module (`frontend-app` folder).
 
+1) `C:\Users\example\Documents\GitHub\swa-en...\frontend-app> npm install`
+2) `C:\Users\example\Documents\GitHub\swa-en...\frontend-app> npm start`
 
 the frontend can be reached via the url `http://localhost:3000/`. Navigation in the frontend should be self-explanatory.
 
-
-
 #### Test the project
-All test tests are stored in the test directory `src/test/java`. These can be started individually or all together.
-With a right mouse click on the 'green' test folder all tests can be started with the menu item 'Run all tests'.
-![abb3.png](abb3.png)
+
+All tests can be started with a right mouse click `Run 'All Tests'` on the `java` folder in the test directory of the web module.
+![abb1.png](abb1.png)
 
 #### External contributions: 
 <i>none</i>
 
 #### Other comments:
-1) I built the basic Project basic structure  with https://start.spring.io/
+1) I generated the basic structure of the frontend app with npx. `npx create-react-app frontend-app`
 
-![abb2](abb2.png)
-
-2) I generated the basic structure of the frontend app with npx. `npx create-react-app frontend-app`
-
-3) UML diagrams and description can be found in the pdf `UML diagrams and description for SWA assignment 20HS 3Ib from 
+2) UML diagrams and description can be found in the pdf `UML diagrams and description for SWA assignment 20HS 3Ib from 
    Christian Sommer.pdf` in the main project folder.
 
 #### proud of
