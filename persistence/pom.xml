@@ -26,6 +26,12 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>ch.fhnw.swa</groupId>
+            <artifactId>web</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
