@@ -1,9 +1,10 @@
-package ch.fhnw.swa.repository;
+package ch.fhnw.swa.persistence.repository;
+
 
 import ch.fhnw.swa.domain.Entry;
 import ch.fhnw.swa.exception.EntryNotFoundException;
+import ch.fhnw.swa.repository.EntryService;
 import ch.fhnw.swa.web.AddressBookApplication;
-import ch.fhnw.swa.web.controll.EntryResourceController;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.Assertions;
@@ -22,8 +23,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
  * Test Class for EntryService entity Service
  */
@@ -41,7 +40,7 @@ class EntryServiceTest {
 
     TestRestTemplate restTemplate = new TestRestTemplate();
 
-    private static final Logger logger = Logger.getLogger(EntryResourceController.class.getName());
+    private static final Logger logger = Logger.getLogger(EntryService.class.getName());
 
     @Test
     void getAllEntries() {

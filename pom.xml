@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ch.fhnw.swa</groupId>
-	<artifactId>spring-boot-multiple-module</artifactId>
+	<artifactId>addressbook</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
 		<module>domain</module>
@@ -13,7 +13,7 @@
 	</modules>
 	<packaging>pom</packaging>
 
-	<name>spring-boot-multiple-module</name>
+	<name>addressbook</name>
 	<description>spring boot multiple module test</description>
 
 	<parent>
