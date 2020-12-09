@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>web</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -41,5 +42,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
