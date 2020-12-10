@@ -100,6 +100,8 @@ To start the <b>frontend</b> run `npm install` and then `npm start` module (`fro
 
 the frontend can be reached via the url `http://localhost:3000/`. Navigation in the frontend should be self-explanatory.
 
+!For the frontend to work, the backend must also be started.
+
 #### Test the project
 
 All tests can be started with a right mouse click `Run 'All Tests'` on the `java` folder in the test directory of the web module.
