@@ -70,15 +70,15 @@ You will have to use a repository (or database), where you will _persist_ the en
 * Maven
 * IntelliJ IDE (recommended)
 
-
 ### How to start the project:
 
 ####BACKEND
 To start the <b>backend</b> run `AddressBookApplication.java` in the `web` module (`package ch.fhnw.swa.web`).
 
+![abb0.png](abb0.png)
 
-The server can reached with over:
-`http://localhost:8080/entries` and `http://localhost:8080/entries/1`
+The server can reached over:
+`http://localhost:8080/entries` or `http://localhost:8080/entries/1` etc...
 
 The following HTTP methods are available on the server side:
 
