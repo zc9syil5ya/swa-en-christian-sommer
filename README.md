@@ -78,7 +78,7 @@ To start the <b>backend</b> run `AddressBookApplication.java` in the `web` modul
 ![abb0.png](abb0.png)
 
 The server can reached over:
-`http://localhost:8080/entries` or `http://localhost:8080/entries/1` etc...
+[http://localhost:8080/entries](http://localhost:8080/entries) or `http://localhost:8080/entries/1` etc...
 
 The following HTTP methods are available on the server side:
 
@@ -86,7 +86,7 @@ The following HTTP methods are available on the server side:
 * [GET]  `/entries/{id}` - returns an entry by ID.
 * [DELETE] `/entries/{id}` - deletes an entry by ID.
 * [PUT] `/entries/{id}` - updates an entry by ID.
-* [POST] `/upload/{id}`- post a avatar for the entry by ID.
+* [POST] `/upload/{id}`- post an avatar for the entry by ID.
 
 so possible actions are, create an entry, edit an entry, delete entry, add an avatar to an entry, edit avatar on the entry
 over curl or the frontend-app UI. 
