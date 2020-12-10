@@ -98,7 +98,7 @@ To start the <b>frontend</b> run `npm install` and then `npm start` module (`fro
 1) `C:\Users\example\Documents\GitHub\swa-en...\frontend-app> npm install`
 2) `C:\Users\example\Documents\GitHub\swa-en...\frontend-app> npm start`
 
-the frontend can be reached via the url `http://localhost:3000/`. Navigation in the frontend should be self-explanatory.
+the frontend can be reached via the url [http://localhost:3000/](http://localhost:3000/). Navigation in the frontend should be self-explanatory.
 
 !For the frontend to work, the backend must also be started.
 
