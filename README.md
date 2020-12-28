@@ -89,7 +89,7 @@ The following HTTP methods are available on the server side:
 * [POST] `/upload/{id}`- post an avatar for the entry by ID.
 
 so possible actions are, create an entry, edit an entry, delete entry, add an avatar to an entry, edit avatar on the entry
-over curl or the frontend-app UI. 
+over curl or the frontend-app UI.
 
 #### Frontend
 
@@ -108,13 +108,13 @@ All tests can be started with a right mouse click `Run 'All Tests'` on the `java
 
 ![abb1.png](abb1.png)
 
-#### External contributions: 
+#### External contributions:
 <i>none</i>
 
 #### Other comments:
 1) I generated the basic structure of the frontend app with npx. `npx create-react-app frontend-app`
 
-2) UML diagrams and description can be found in the pdf `UML diagrams and description for SWA assignment 20HS 3Ib from 
+2) UML diagrams and description can be found in the pdf `UML diagrams and description for SWA assignment 20HS 3Ib from
    Christian Sommer.pdf` in the main project folder.
 
 #### proud of
@@ -122,4 +122,9 @@ I'm particular proud of: <i>that images can be uploaded and are validated by siz
 
 ## Project grading
 
-(_to be filled by lecturer_)
+Very nice delivery! You uploaded a multi-modules application, based on a given template.
+You spent some time on details, and I liked it. Highest grade well deserved!
+
+Kindly Refer to [GradedExercise.xlsx](GradedExercise.xlsx) for grading details.
+
+Grade: **6.0**
